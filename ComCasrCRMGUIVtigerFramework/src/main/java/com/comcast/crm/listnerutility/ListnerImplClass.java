@@ -46,21 +46,21 @@ public void onTestStart(ITestResult result) {
 	System.out.println("====>"+result.getMethod().getMethodName()+" start<====");
 	test = report.createTest(result.getMethod().getMethodName());
 	UtilityClassObject.setTest(test);
-	test.log(Status.INFO,result.getMethod().getMethodName()+" started");
+	UtilityClassObject.getTest().log(Status.INFO,result.getMethod().getMethodName()+" started");
 }
 public void onTestSucess(ITestResult result) {
 	System.out.println("====>"+result.getMethod().getMethodName()+" End<====");
-	test.log(Status.PASS, result.getMethod().getMethodName()+" completed");
+	UtilityClassObject.getTest().log(Status.PASS, result.getMethod().getMethodName()+" completed");
 	
 }
 public void onTestFailure(ITestResult result) {
 	String testName = result.getMethod().getMethodName();
-	TakesScreenshot ts =  (TakesScreenshot)BaseClass.sdriver;
+	TakesScreenshot ts =  (TakesScreenshot)UtilityClassObject.getDriver();
 	String src = ts.getScreenshotAs(OutputType.BASE64);
 	
 	String	time=new Date().toString().replace(" ", "_").replace(":", "_");
-	test.addScreenCaptureFromBase64String(src, testName+"_"+time);
-	test.log(Status.FAIL,result.getMethod().getMethodName()+" failed");
+	UtilityClassObject.getTest().addScreenCaptureFromBase64String(src, testName+"_"+time);
+	UtilityClassObject.getTest().log(Status.FAIL,result.getMethod().getMethodName()+" failed");
 	
 }
 public void onTestSkipped(ITestResult result) {

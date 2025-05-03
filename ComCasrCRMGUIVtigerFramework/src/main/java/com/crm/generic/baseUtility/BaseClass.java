@@ -41,9 +41,9 @@ public class BaseClass {
 	}
 	@Parameters("BROWSER")
 	@BeforeClass(groups = {"SmokeTest", "RegressionTest"})
-	public void configBeforeClass() throws IOException {
+	public void configBeforeClass(String browser) throws IOException {
 		System.out.println("Launched the browser");
-		String BROWSER=flib.getDataFromPropertiesFile("browser");
+		String BROWSER=browser;//flib.getDataFromPropertiesFile("browser");
          if(BROWSER.equalsIgnoreCase("chrome")) {
         	 driver = new ChromeDriver();
          }else if(BROWSER.equalsIgnoreCase("edge")) {

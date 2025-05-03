@@ -31,6 +31,9 @@ public class HomePage {
 	@FindBy(id = "more")
 	private WebElement campaignLink;
 	
+	@FindBy(linkText = "Dashboard")
+	private WebElement dashBoardLink;
+	
 	@FindBy(xpath = "//img[@src='themes/softed/images/user.PNG']")
 	private WebElement adminImg;
 	
@@ -50,6 +53,10 @@ public class HomePage {
 
 	public WebElement getContactLink() {
 		return contactLink;
+	}
+	
+	public WebElement getDashboardLink() {
+		return dashBoardLink;
 	}
 
 	public WebElement getProductLink() {

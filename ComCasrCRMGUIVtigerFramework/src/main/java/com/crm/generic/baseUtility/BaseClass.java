@@ -21,7 +21,7 @@ import com.comcast.crm.generic.webdriverutility.JavaUtility;
 import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
 import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 import com.comcast.crm.objectRepositoryUtility.HomePage;
-import com.comcast.crm.objectRepositoryUtility.LoginPage;
+//import com.comcast.crm.objectRepositoryUtility.LoginPage;
 
 public class BaseClass {
 	
@@ -57,7 +57,7 @@ public class BaseClass {
 	@BeforeMethod(groups = {"SmokeTest", "RegressionTest"})
 	public void configBM() throws IOException {
 		System.out.println("Login to application");
-		LoginPage lp = new LoginPage(driver);
+		//LoginPage lp = new LoginPage(driver);
 		/*
 		 * String URL = flib.getDataFromPropertiesFile("url"); String USERNAME =
 		 * flib.getDataFromPropertiesFile("username"); String PASSWORD =

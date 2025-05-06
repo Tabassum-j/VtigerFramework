@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -17,7 +18,7 @@ import com.comcast.crm.objectRepositoryUtility.HomePage;
 import com.comcast.crm.objectRepositoryUtility.OrganizationInfromationPage;
 import com.comcast.crm.objectRepositoryUtility.OrganizationsPage;
 import com.crm.generic.baseUtility.BaseClassMain;
-
+@Listeners(com.comcast.crm.listnerutility.ListnerImplClass.class)
 public class CreateContactTest extends BaseClassMain {
 
 	@Test(groups = {"SmokeTest", "RegressionTest"})

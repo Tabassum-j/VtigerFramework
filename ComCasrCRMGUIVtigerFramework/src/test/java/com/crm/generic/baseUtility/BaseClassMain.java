@@ -20,6 +20,7 @@ import com.comcast.crm.generic.databaseutility.DatabaseUtility;
 import com.comcast.crm.generic.fileutility.ExcelUtility;
 import com.comcast.crm.generic.fileutility.FileUtility;
 import com.comcast.crm.generic.webdriverutility.JavaUtility;
+import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
 import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 import com.comcast.crm.objectRepositoryUtility.HomePage;
 import com.comcast.crm.objectRepositoryUtility.LoginPage;
@@ -54,7 +55,8 @@ public class BaseClassMain {
          }else {
         	 driver = new ChromeDriver();
          }
-         sdriver=driver;
+         UtilityClassObject.setDriver(driver);
+         //sdriver=driver;
 	}
 	@BeforeMethod(groups = {"SmokeTest", "RegressionTest"})
 	public void configBM() throws IOException {

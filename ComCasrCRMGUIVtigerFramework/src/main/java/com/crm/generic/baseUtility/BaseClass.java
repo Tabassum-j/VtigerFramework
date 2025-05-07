@@ -30,8 +30,8 @@ public class BaseClass {
 	public ExcelUtility elib = new ExcelUtility();
 	public	JavaUtility jlib = new JavaUtility();
 	public WebDriverUtility wLib= new WebDriverUtility();
-	public WebDriver driver = null;
-	public static WebDriver sdriver = null;
+	public WebDriver driver ;
+	public static WebDriver sdriver ;
 	
 	@BeforeSuite(groups = {"SmokeTest", "RegressionTest"})
 	public void configBeforeSuite() throws SQLException {
@@ -57,13 +57,6 @@ public class BaseClass {
 	@BeforeMethod(groups = {"SmokeTest", "RegressionTest"})
 	public void configBM() throws IOException {
 		System.out.println("Login to application");
-		//LoginPage lp = new LoginPage(driver);
-		/*
-		 * String URL = flib.getDataFromPropertiesFile("url"); String USERNAME =
-		 * flib.getDataFromPropertiesFile("username"); String PASSWORD =
-		 * flib.getDataFromPropertiesFile("password"); lp.loginToapp(URL,USERNAME ,
-		 * PASSWORD);
-		 */
 		String URL = System.getProperty("url",flib.getDataFromPropertiesFile("url"));
 		String USERNAME = System.getProperty("username", flib.getDataFromPropertiesFile("username"));
 		String PASSWORD = System.getProperty("password",flib.getDataFromPropertiesFile("password"));

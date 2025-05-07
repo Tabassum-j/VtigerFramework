@@ -15,11 +15,12 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
+import com.crm.generic.baseUtility.BaseClass;
 
 public class ListnerImplClass implements ITestListener, ISuiteListener {
 	public static ExtentReports report;
 	public ExtentSparkReporter spark;
-	ExtentTest test;
+	public static ExtentTest test;
 
 	
 public void onStart(ISuite suite) {
@@ -45,21 +46,21 @@ public void onTestStart(ITestResult result) {
 	System.out.println("====>"+result.getMethod().getMethodName()+" start<====");
 	test = report.createTest(result.getMethod().getMethodName());
 	UtilityClassObject.setTest(test);
-	UtilityClassObject.getTest().log(Status.INFO,result.getMethod().getMethodName()+" started");
+	test.log(Status.INFO,result.getMethod().getMethodName()+" started");
 }
 public void onTestSucess(ITestResult result) {
 	System.out.println("====>"+result.getMethod().getMethodName()+" End<====");
-	UtilityClassObject.getTest().log(Status.PASS, result.getMethod().getMethodName()+" completed");
+	test.log(Status.PASS, result.getMethod().getMethodName()+" completed");
 	
 }
 public void onTestFailure(ITestResult result) {
+	test.log(Status.FAIL,result.getMethod().getMethodName()+" failed");
+	
 	String testName = result.getMethod().getMethodName();
 	TakesScreenshot ts =  (TakesScreenshot)UtilityClassObject.getDriver();
 	String src = ts.getScreenshotAs(OutputType.BASE64);
-	
 	String	time=new Date().toString().replace(" ", "_").replace(":", "_");
-	UtilityClassObject.getTest().addScreenCaptureFromBase64String(src, testName+"_"+time);
-	UtilityClassObject.getTest().log(Status.FAIL,result.getMethod().getMethodName()+" failed");
+	test.addScreenCaptureFromBase64String(src, testName+"_"+time);
 	
 }
 public void onTestSkipped(ITestResult result) {

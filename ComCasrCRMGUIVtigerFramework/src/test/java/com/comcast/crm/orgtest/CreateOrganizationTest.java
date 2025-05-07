@@ -31,7 +31,8 @@ public class CreateOrganizationTest extends BaseClassMain {
 		HomePage hp = new HomePage(driver);
 		UtilityClassObject.getTest().log(Status.INFO, "Navigate to Organization Page");
 		hp.getOrgLink().click();
-
+        //Assert.fail("im failing");
+		
 		// Click on organization module
 		OrganizationsPage op = new OrganizationsPage(driver);
 		UtilityClassObject.getTest().log(Status.INFO, "Navigate to create Organization Page");
